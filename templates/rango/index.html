@@ -13,6 +13,16 @@
         hello world! <strong>{{ boldmessage }}</strong><br />
         <a href="/rango/about/">About</a><br />
         <img src="{% static "images/rango-picture.png" %}" alt="Picture of Rango" /> <!-- New line -->
+		
+		{% if categories %}
+			<ul>
+				{% for category in categories %}
+				<li>{{ category.name }} {{ category.views }}</li>
+				{% endfor %}
+			</ul>
+		{% else %}
+			<strong>No cats bro!</strong>
+		{% endif %}
     </body>
 
 </html>
