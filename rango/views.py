@@ -1,6 +1,23 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from rango.models import Category
+
+from rango.models import Category, Page
+
+def category(request, category_name_slug):
+	context_dict = {}
+	
+	try:
+		category = Category.objects.get(slug=category_name_slug)
+		
+		pages = Page.objects.filter(category=category)
+		
+		context_dict['page'] = pages
+		context_dict['category'] = category
+	except Category.DoesNotExist:
+		pass
+		
+	return render(request, 'rango/category.html', context_dict)
+
 
 def index(request):
 	category_list = Category.objects.order_by('-likes')[:5]
