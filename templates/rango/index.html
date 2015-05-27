@@ -17,6 +17,16 @@
        {% else %}
             <strong>There are no categories present.</strong>
        {% endif %}
+	   <h1>Just some of the most popular pages on the web, here</h1>
+	   {% if pages %}
+			<ul>
+				{% for page in pages %}
+				<li><a href="{{ page.url }}">{{ page.title }}</a></li>
+				{% endfor %}
+			</ul>
+		{% else %}
+			<strong>No pages exist, at all</strong>
+		{% endif %}
 
     </body>
 </html>
