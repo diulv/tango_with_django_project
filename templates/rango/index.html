@@ -31,12 +31,11 @@
 		{% else %}
 			<strong>No pages exist, at all</strong>
 		{% endif %}
-		
 		<a href="/rango/add_category/">Add a new Category</a><br />
-		
+		{% if user.is_authenticated != True %}
 		<a href="/rango/register/">Register Here</a>
 		
 		<a href="/rango/login/">Login</a>
-
+		{% endif %}
     </body>
 </html>
